@@ -201,7 +201,7 @@ function JsonStringValidate(const S: string): Boolean;
 function JsonStringEncode(const S: string): string;
 { JsonStringEncode converts a json string to a pascal string }
 function JsonStringDecode(const S: string): string;
-{ JsonStringEncode converts a json string to xml }
+{ JsonToXml converts a json string to xml }
 function JsonToXml(const S: string): string;
 
 implementation
@@ -953,6 +953,7 @@ begin
   N := Child(Index);
   if N <> nil then
   begin
+    N.Free;
     FList.Delete(Index);
     if FList.Count = 0 then
     begin
@@ -969,6 +970,7 @@ begin
   N := Child(Name);
   if N <> nil then
   begin
+    N.Free;
     FList.Remove(N);
     if FList.Count = 0 then
     begin
